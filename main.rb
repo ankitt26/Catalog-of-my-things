@@ -1,5 +1,3 @@
-
-
 class App
   def book_list
     puts "Book 1 \nBook 2 \n"
@@ -34,28 +32,45 @@ class App
   end
 
   def add_book
-    puts "You have added a book"
+    puts 'You have added a book'
   end
 
   def add_music_album
-    puts "You have added album"
+    puts 'You have added album'
   end
 
   def add_movie
-    puts "You have added movie"
+    puts 'You have added movie'
   end
 
   def add_game
-    puts "You have added a game"
+    puts 'You have added a game'
   end
 end
 
-
 def main
-  app = App.new
-  puts "My Catalog"
+  App.new
+  puts 'My Catalog'
 
-  menu_selection = {
+  app = App.new
+  puts 'My Catalog'
+
+  menu_selection = menu_hash(app)
+
+  loop do
+    menu_options
+    choice = gets.chomp.to_i
+
+    if menu_selection.key?(choice)
+      menu_selection[choice].call
+    else
+      show_invalid_choice
+    end
+  end
+end
+
+def menu_hash(app)
+  {
     1 => app.method(:book_list),
     2 => app.method(:music_albums),
     3 => app.method(:movies_list),
@@ -70,21 +85,7 @@ def main
     12 => app.method(:add_game),
     13 => method(:exit_app)
   }
-
-  loop do
-    menu_options
-    choice = gets.chomp.to_i
-
-    if menu_selection.key?(choice)
-      menu_selection[choice].call
-    else
-      show_invalid_choice
-    end
-  end
-
-
 end
-
 
 def menu_options
   puts "\nPlease choose an option:"
