@@ -2,35 +2,35 @@
 
 class App
   def book_list
-    puts "Book 1 \n Book 2 \n"
+    puts "Book 1 \nBook 2 \n"
   end
 
   def music_albums
-    puts "Glory Sound Prep \n Wasteland, Baby! \n"
+    puts "Glory Sound Prep \nWasteland, Baby!"
   end
 
   def movies_list
-    puts "Hobbits \n Lord of the Rings"
+    puts "Hobbits \nLord of the Rings"
   end
 
   def games_list
-    puts "Far Cry \n Uncharted"
+    puts "Far Cry \nUncharted"
   end
 
   def genre_list
-    puts "Sci-Fi \n Adventure"
+    puts "Sci-Fi \nAdventure"
   end
 
   def labels_list
-    puts "Gift \n New"
+    puts "Gift \nNew"
   end
 
   def authors_list
-    puts "Ababio \n J.R.R Tolkien "
+    puts "Ababio \nJ.R.R Tolkien "
   end
 
   def source_list
-    puts "From friend \n Gift from Mom"
+    puts "From friend \nGift from Mom"
   end
 
   def add_book
@@ -55,6 +55,33 @@ def main
   app = App.new
   puts "My Catalog"
 
+  menu_selection = {
+    1 => app.method(:book_list),
+    2 => app.method(:music_albums),
+    3 => app.method(:movies_list),
+    4 => app.method(:games_list),
+    5 => app.method(:genre_list),
+    6 => app.method(:labels_list),
+    7 => app.method(:authors_list),
+    8 => app.method(:source_list),
+    9 => app.method(:add_book),
+    10 => app.method(:add_music_album),
+    11 => app.method(:add_movie),
+    12 => app.method(:add_game),
+    13 => method(:exit_app)
+  }
+
+  loop do
+    menu_options
+    choice = gets.chomp.to_i
+
+    if menu_selection.key?(choice)
+      menu_selection[choice].call
+    else
+      show_invalid_choice
+    end
+  end
+
 
 end
 
@@ -73,5 +100,17 @@ def menu_options
   puts '10. Add a music album'
   puts '11. Add a movie'
   puts '12. Add a game'
-  puts '13.  Exit'
+  puts '13. Exit'
 end
+
+def show_invalid_choice
+  puts 'Invalid choice. Please try again.'
+end
+
+def exit_app
+  puts 'Exiting the app. Goodbye!'
+  exit
+end
+
+
+main
