@@ -20,6 +20,3 @@ class Item
     @archived = true if can_be_archived?
   end
 end
-
-item_1 = Item.new("2001-03-01")
-item_1.can_be_archived?
