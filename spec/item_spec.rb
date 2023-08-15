@@ -1,4 +1,4 @@
-require_relative '../item'
+require_relative '../classes/item'
 
 describe Item do
   describe '#can_be_archived?' do
