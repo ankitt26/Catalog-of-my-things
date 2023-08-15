@@ -12,6 +12,3 @@ class MusicAlbum < Item
     super() && @on_spotify
   end
 end
-
-wiz = MusicAlbum.new('2021-8-8')
-puts wiz.can_be_archived?
