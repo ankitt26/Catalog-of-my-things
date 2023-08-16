@@ -104,4 +104,4 @@ end
 cat_app = App.new
 # catApp.add_music_album
 # catApp.list_genres
-cat_app.list_music_albums
+cat_app.list_authors
