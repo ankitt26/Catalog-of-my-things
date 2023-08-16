@@ -18,4 +18,10 @@ class Genre
       'items' => @items.map(&:to_hash)
     }
   end
+
+  def summary
+    {
+      'name' => @name
+    }
+  end
 end
