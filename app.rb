@@ -26,9 +26,9 @@ class App
     label = get_label('storage/label.json', music)
     genre = get_genre('storage/genres.json', music)
     music_to_hash = music.to_hash.merge({
-                                         'author' => author,
-                                         'label' => label,
-                                        'genre' => genre
+                                          'author' => author,
+                                          'label' => label,
+                                          'genre' => genre
                                         })
     @save_retrieve_data.save('storage/music_albums.json', music_to_hash)
     puts 'Music album added successfully!'
@@ -57,5 +57,7 @@ class App
   end
 end
 
-catApp = App.new
-catApp.add_music_album
+cat_app = App.new
+# catApp.add_music_album
+# catApp.list_genres
+cat_app.list_music_albums

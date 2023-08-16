@@ -1,6 +1,6 @@
 require 'json'
 
-FILES = ['authors.json', 'genres.json', 'games.json', 'music_albums.json', 'books.json', 'label.json']
+FILES = ['authors.json', 'genres.json', 'games.json', 'music_albums.json', 'books.json', 'label.json'].freeze
 
 class SaveRetrieveData
   def create_files
