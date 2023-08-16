@@ -56,3 +56,6 @@ class App
     puts "\n\n"
   end
 end
+
+catApp = App.new
+catApp.add_music_album
