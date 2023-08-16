@@ -55,6 +55,26 @@ class App
     end
     puts "\n\n"
   end
+
+  def list_authors
+    authors = @save_retrieve_data.get_data('storage/authors.json')
+    puts 'The list is empty!' if authors.empty?
+    authors.each { |author| puts "[Author] First name : #{author['first_name']} | Last name: #{author['last_name']}" }
+    puts "\n\n"
+  end
+
+  def list_games
+    games = @save_retrieve_data.get_data('storage/games.json')
+    puts 'The list is empty!' if games.empty?
+    games.each do |game|
+      author = game['author']['first_name']
+      label = game['label']['title']
+      genre = game['genre']['name']
+      print "\n[Game] Author: #{author} | Label: #{label} | Genre: #{genre} | Multiplayer : #{game['multiplayer']}"
+      print " | Publish date: #{game['publish_date']} | Last played_at: #{game['last_played']}"
+    end
+    puts "\n\n"
+  end
 end
 
 cat_app = App.new
