@@ -7,7 +7,6 @@ class Book < Item
     super(publish_date)
     @publisher = publisher
     @cover_state = cover_state
-    puts can_be_archived?
   end
 
   private
