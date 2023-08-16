@@ -15,34 +15,4 @@ describe MusicAlbum do
       expect(album.on_spotify).to eq false
     end
   end
-
-  describe '#can_be_archived' do
-    context 'Given a publish_date earlier than 2013 and on_spotify = false' do
-      it 'Should return false' do
-        album = MusicAlbum.new('2011-8-8', on_spotify: false)
-        expect(album.can_be_archived?).to eq false
-      end
-    end
-
-    context 'Given a publish_date later than 2013 and on_spotify = false' do
-      it 'Should return false' do
-        album = MusicAlbum.new('2018-8-8', on_spotify: false)
-        expect(album.can_be_archived?).to eq false
-      end
-    end
-
-    context 'Given a publish_date earlier than 2013 and on_spotify = true' do
-      it 'Should return false' do
-        album = MusicAlbum.new('2011-8-8', on_spotify: true)
-        expect(album.can_be_archived?).to eq true
-      end
-    end
-
-    context 'Given a publish_date later than 2013 and on_spotify = false' do
-      it 'Should return false' do
-        album = MusicAlbum.new('2016-8-8', on_spotify: true)
-        expect(album.can_be_archived?).to eq false
-      end
-    end
-  end
 end
