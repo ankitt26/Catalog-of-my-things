@@ -33,4 +33,17 @@ class App
     @save_retrieve_data.save('storage/music_albums.json', music_to_hash)
     puts 'Music album added successfully!'
   end
+
+  def list_music_albums
+    music_albums = @save_retrieve_data.get_data('storage/music_albums.json')
+    puts 'The list is empty!' if music_albums.empty?
+    music_albums.each do |music|
+      author = music['author'].nil? ? 'Empty' : music['author']['first_name']
+      genre = music['genre'].nil? ? 'Empty' : music['genre']['name']
+      label = music['label'].nil? ? 'Empty' : music['label']['title']
+      print "\n[Music Album] Author: #{author} | Genre: #{genre} | label: #{label} | "
+      print "Published at: #{music['publish_date']} | On spotify: #{music['on_spotify']}"
+    end
+    puts "\n\n"
+  end
 end
