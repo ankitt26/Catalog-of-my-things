@@ -55,9 +55,53 @@ class App
     end
     puts "\n\n"
   end
+
+  def list_authors
+    authors = @save_retrieve_data.get_data('storage/authors.json')
+    puts 'The list is empty!' if authors.empty?
+    authors.each { |author| puts "[Author] First name : #{author['first_name']} | Last name: #{author['last_name']}" }
+    puts "\n\n"
+  end
+
+  def list_games
+    games = @save_retrieve_data.get_data('storage/games.json')
+    puts 'The list is empty!' if games.empty?
+    games.each do |game|
+      author = game['author']['first_name']
+      label = game['label']['title']
+      genre = game['genre']['name']
+      print "\n[Game] Author: #{author} | Label: #{label} | Genre: #{genre} | Multiplayer : #{game['multiplayer']}"
+      print " | Publish date: #{game['publish_date']} | Last played_at: #{game['last_played']}"
+    end
+    puts "\n\n"
+  end
+
+  def add_game
+    print 'Publish date: '
+    publish = gets.chomp
+
+    print 'Multiplayer [y/n]: '
+    multiplayer = gets.chomp
+    puts 'Out of range' unless %w[y n].include?(multiplayer)
+    multiplayer_yes = multiplayer == 'y'
+
+    print 'Last played at: '
+    last_played_at = gets.chomp
+    game = Game.new(publish, multiplayer_yes, last_played_at)
+    author = get_author('storage/authors.json', game)
+    label = get_label('storage/label.json', game)
+    genre = get_genre('storage/genres.json', game)
+    game_to_hash = game.to_hash.merge({
+                                        'author' => author,
+                                        'label' => label,
+                                        'genre' => genre
+                                      })
+    @save_retrieve_data.save('storage/games.json', game_to_hash)
+    puts "Game added successfully!\n"
+  end
 end
 
 cat_app = App.new
 # catApp.add_music_album
 # catApp.list_genres
-cat_app.list_music_albums
+cat_app.list_authors
