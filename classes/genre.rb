@@ -11,4 +11,17 @@ class Genre
     @items << item
     item.genre = self
   end
+
+  def to_hash
+    {
+      'name' => @name,
+      'items' => @items.map(&:to_hash)
+    }
+  end
+
+  def summary
+    {
+      'name' => @name
+    }
+  end
 end
