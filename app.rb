@@ -46,4 +46,13 @@ class App
     end
     puts "\n\n"
   end
+
+  def list_genres
+    genres = @save_retrieve_data.get_data('storage/genres.json')
+    puts 'The list is empty!' if genres.empty?
+    genres.each do |genre|
+      puts "[Genre] #{genre['name']}"
+    end
+    puts "\n\n"
+  end
 end
