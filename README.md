@@ -12,6 +12,7 @@
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
+    - [Install](#install)
     - [Usage](#usage)
     - [Run tests](#run-tests)
   - [👥 Authors ](#-authors-)
@@ -56,8 +57,10 @@ To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-- Ruby
-- GitHub
+In order to run this project you need:
+
+- `ruby`
+- Text editor like `VSCode`
 
 ### Setup
 
@@ -68,6 +71,15 @@ Example commands:
 ```sh
   cd my-folder
   git clone git@github.com:ankitt26/Catalog-of-my-things.git
+```
+
+### Install
+
+Install this project with:
+
+```sh
+  cd my-project
+  bundle install
 ```
 
 ### Usage
@@ -143,8 +155,7 @@ Give a ⭐️ if you like this project!
 <!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-- [Microverse](https://www.microverse.org/)
+- I would like to thank [@forLoop94](https://github.com/forLoop94) , [@toyman640](https://github.com/toyman640) for collaborating on this Project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
