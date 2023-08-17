@@ -47,3 +47,8 @@ CREATE TABLE game (
     multiplayer VARCHAR(256),
     last_played_at DATE
 );
+
+CREATE TABLE movie (
+    id INTEGER PRIMARY KEY REFERENCES item(id),
+    silent BOOLEAN
+);
