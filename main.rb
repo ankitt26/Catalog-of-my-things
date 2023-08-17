@@ -44,6 +44,7 @@ end
 
 def main
   app = App.new
+  puts "\n"
   puts '**********************************************'
   puts "\nCATALOG OF MY THINGS\n\n"
 
