@@ -36,3 +36,8 @@ CREATE TABLE book (
     publisher VARCHAR(256),
     cover_state VARCHAR(256)
 );
+
+CREATE TABLE music_album (
+    id INTEGER PRIMARY KEY REFERENCES item(id),
+    on_spotify BOOLEAN
+);
