@@ -121,9 +121,25 @@ class App
     @save_retrieve_data.save('storage/books.json', book_to_hash)
     puts 'New book successfully added!'
   end
+
+  def list_books
+    books = @save_retrieve_data.get_data('storage/books.json')
+    puts 'The list is empty!' if books.empty?
+    books.each do |book|
+      publisher_name = book['publisher']
+      publish_date = book['publish_date']
+      cover_state = book['cover_state']
+      author = book['author']['first_name']
+      label = book['label']['title']
+      genre = book['genre']['name']
+      print "\n[Book] Author:#{author} | Label: #{label} | Genre: #{genre} | "
+      print "Publisher : #{publisher_name} | Published at: #{publish_date} | Cover: #{cover_state}"
+    end
+    puts "\n\n"
+  end
 end
 
 cat_app = App.new
 # catApp.add_music_album
 # catApp.list_genres
-cat_app.add_book
+cat_app.list_books
