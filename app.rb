@@ -138,7 +138,6 @@ class App
     puts "\n\n"
   end
 
-  
   def list_labels
     labels = @save_retrieve_data.get_data('storage/label.json')
     puts 'The list is empty!' if labels.empty?
