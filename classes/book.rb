@@ -9,6 +9,14 @@ class Book < Item
     @cover_state = cover_state
   end
 
+  def to_hash
+    {
+      'publish_date' => @publish_date,
+      'publisher' => @publisher,
+      'cover_state' => @cover_state
+    }
+  end
+
   private
 
   def can_be_archived?
