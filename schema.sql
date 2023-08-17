@@ -41,3 +41,9 @@ CREATE TABLE music_album (
     id INTEGER PRIMARY KEY REFERENCES item(id),
     on_spotify BOOLEAN
 );
+
+CREATE TABLE game (
+    id INTEGER PRIMARY KEY REFERENCES item(id),
+    multiplayer VARCHAR(256),
+    last_played_at DATE
+);
