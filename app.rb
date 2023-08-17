@@ -99,9 +99,56 @@ class App
     @save_retrieve_data.save('storage/games.json', game_to_hash)
     puts "Game added successfully!\n"
   end
+
+  def add_book
+    puts 'A) Publication date (format: yyyy-mm-dd) :'
+    publish_date = gets.chomp
+    puts 'B) Name of publisher :'
+    publisher = gets.chomp
+    puts 'C) State of book cover (Bad or Good) :'
+    cover_state = gets.chomp
+    book = Book.new(publisher, cover_state, publish_date)
+    author = get_author('storage/authors.json', book)
+    label = get_label('storage/label.json', book)
+    genre = get_genre('storage/genres.json', book)
+    book_to_hash = book.to_hash.merge(
+      {
+        'author' => author,
+        'label' => label,
+        'genre' => genre
+      }
+    )
+    @save_retrieve_data.save('storage/books.json', book_to_hash)
+    puts 'New book successfully added!'
+  end
+
+  def list_books
+    books = @save_retrieve_data.get_data('storage/books.json')
+    puts 'The list is empty!' if books.empty?
+    books.each do |book|
+      publisher_name = book['publisher']
+      publish_date = book['publish_date']
+      cover_state = book['cover_state']
+      author = book['author']['first_name']
+      label = book['label']['title']
+      genre = book['genre']['name']
+      print "\n[Book] Author:#{author} | Label: #{label} | Genre: #{genre} | "
+      print "Publisher : #{publisher_name} | Published at: #{publish_date} | Cover: #{cover_state}"
+    end
+    puts "\n\n"
+  end
+
+  def list_labels
+    labels = @save_retrieve_data.get_data('storage/label.json')
+    puts 'The list is empty!' if labels.empty?
+    labels.each_with_index do |label, index|
+      puts "#{index + 1}) [Label] Title: #{label['title']} | Label Color: #{label['color']}"
+    end
+    puts "\n\n"
+  end
 end
 
 cat_app = App.new
 # catApp.add_music_album
 # catApp.list_genres
-cat_app.list_authors
+cat_app.list_labels
