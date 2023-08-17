@@ -137,9 +137,19 @@ class App
     end
     puts "\n\n"
   end
+
+  
+  def list_labels
+    labels = @save_retrieve_data.get_data('storage/label.json')
+    puts 'The list is empty!' if labels.empty?
+    labels.each_with_index do |label, index|
+      puts "#{index + 1}) [Label] Title: #{label['title']} | Label Color: #{label['color']}"
+    end
+    puts "\n\n"
+  end
 end
 
 cat_app = App.new
 # catApp.add_music_album
 # catApp.list_genres
-cat_app.list_books
+cat_app.list_labels
