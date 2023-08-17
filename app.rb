@@ -99,9 +99,31 @@ class App
     @save_retrieve_data.save('storage/games.json', game_to_hash)
     puts "Game added successfully!\n"
   end
+
+  def add_book
+    puts 'A) Publication date (format: yyyy-mm-dd) :'
+    publish_date = gets.chomp
+    puts 'B) Name of publisher :'
+    publisher = gets.chomp
+    puts 'C) State of book cover (Bad or Good) :'
+    cover_state = gets.chomp
+    book = Book.new(publisher, cover_state, publish_date)
+    author = get_author('storage/authors.json', book)
+    label = get_label('storage/label.json', book)
+    genre = get_genre('storage/genres.json', book)
+    book_to_hash = book.to_hash.merge(
+      {
+        'author' => author,
+        'label' => label,
+        'genre' => genre
+      }
+    )
+    @save_retrieve_data.save('storage/books.json', book_to_hash)
+    puts 'New book successfully added!'
+  end
 end
 
 cat_app = App.new
 # catApp.add_music_album
 # catApp.list_genres
-cat_app.list_authors
+cat_app.add_book
