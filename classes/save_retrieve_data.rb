@@ -12,7 +12,6 @@ class SaveRetrieveData
   def get_data(file)
     file_data = File.read(file)
     JSON.parse(file_data)
-    []
   end
 
   def save(file, data)

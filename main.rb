@@ -1,116 +1,60 @@
-class App
-  def book_list
-    puts "Book 1 \nBook 2 \n"
-  end
+require_relative 'app'
 
-  def music_albums
-    puts "Glory Sound Prep \nWasteland, Baby!"
-  end
+def choose_option
+  puts '**********************************************'
+  puts "\n"
+  'please choose an option by selecting a number
+  1 - List all books
+  2 - List all music albums
+  3 - List of games
+  4 - List all genres
+  5 - List all labels
+  6 - List all authors
+  7 - Add a book
+  8 - Add a music album
+  9 - Add a game
+  10 - Exit'
+end
 
-  def movies_list
-    puts "Hobbits \nLord of the Rings"
+def user_list_options(choice, app)
+  case choice
+  when 1 then app.list_books
+  when 2 then app.list_music_albums
+  when 3 then app.list_games
+  when 4 then app.list_genres
+  when 5 then app.list_labels
+  when 6 then app.list_authors
   end
+end
 
-  def games_list
-    puts "Far Cry \nUncharted"
-  end
-
-  def genre_list
-    puts "Sci-Fi \nAdventure"
-  end
-
-  def labels_list
-    puts "Gift \nNew"
-  end
-
-  def authors_list
-    puts "Ababio \nJ.R.R Tolkien "
-  end
-
-  def source_list
-    puts "From friend \nGift from Mom"
-  end
-
-  def add_book
-    puts 'You have added a book'
-  end
-
-  def add_music_album
-    puts 'You have added album'
-  end
-
-  def add_movie
-    puts 'You have added movie'
-  end
-
-  def add_game
-    puts 'You have added a game'
+def user_options(choice, app)
+  case choice
+  when 1..6 then user_list_options(choice, app)
+  when 7 then app.add_book
+  when 8 then app.add_music_album
+  when 9 then app.add_game
+  when 10
+    puts 'Thanks for using this app'
+    puts "\n***********************************************"
+    exit
+  else
+    puts 'Selected number must be between 1 and 10'
   end
 end
 
 def main
-  App.new
-  puts 'My Catalog'
-
   app = App.new
-  puts 'My Catalog'
-
-  menu_selection = menu_hash(app)
+  puts "\n"
+  puts '**********************************************'
+  puts "\nCATALOG OF MY THINGS\n\n"
 
   loop do
-    menu_options
+    puts choose_option
     choice = gets.chomp.to_i
-
-    if menu_selection.key?(choice)
-      menu_selection[choice].call
-    else
-      show_invalid_choice
-    end
+    puts "\n"
+    user_options(choice, app)
+    puts "\n"
   end
-end
-
-def menu_hash(app)
-  {
-    1 => app.method(:book_list),
-    2 => app.method(:music_albums),
-    3 => app.method(:movies_list),
-    4 => app.method(:games_list),
-    5 => app.method(:genre_list),
-    6 => app.method(:labels_list),
-    7 => app.method(:authors_list),
-    8 => app.method(:source_list),
-    9 => app.method(:add_book),
-    10 => app.method(:add_music_album),
-    11 => app.method(:add_movie),
-    12 => app.method(:add_game),
-    13 => method(:exit_app)
-  }
-end
-
-def menu_options
-  puts "\nPlease choose an option:"
-  puts '1. List all books'
-  puts '2. List all music albums'
-  puts '3. List all movies'
-  puts '4. List all games'
-  puts '5. List all genre'
-  puts '6. List all labels'
-  puts '7. List all authors'
-  puts '8. List all sources'
-  puts '9. Add a book'
-  puts '10. Add a music album'
-  puts '11. Add a movie'
-  puts '12. Add a game'
-  puts '13. Exit'
-end
-
-def show_invalid_choice
-  puts 'Invalid choice. Please try again.'
-end
-
-def exit_app
-  puts 'Exiting the app. Goodbye!'
-  exit
 end
 
 main
