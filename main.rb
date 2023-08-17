@@ -33,7 +33,7 @@ def main
     when '8' then app.add_music_album
     when '9' then app.add_game
     when '10'
-      puts "Thanks for using this app"
+      puts 'Thanks for using this app'
       puts "\n***********************************************"
       exit
     else
