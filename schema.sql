@@ -16,3 +16,8 @@ CREATE TABLE author (
     first_name VARCHAR(49),
     last_name VARCHAR(49)
 );
+
+CREATE TABLE source (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256)
+);
