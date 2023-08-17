@@ -12,3 +12,12 @@ OPTIONS = {
   '9' => 'Add a Game',
   '10' => 'Quit'
 }.freeze
+
+def main
+  app = App.new
+  puts '**********************************************'
+  puts "\nCATALOG OF MY THINGS\n\n"
+  puts '**********************************************'
+end
+
+main
