@@ -30,3 +30,9 @@ CREATE TABLE item (
     label_id INTEGER REFERENCES label(id),
     publish_date DATE
 );
+
+CREATE TABLE book (
+    id INTEGER PRIMARY KEY REFERENCES item(id),
+    publisher VARCHAR(256),
+    cover_state VARCHAR(256)
+);
