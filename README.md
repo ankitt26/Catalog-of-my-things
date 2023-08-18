@@ -9,6 +9,7 @@
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
+  - [📽️ Presentation ](#️-presentation-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -46,6 +47,12 @@
 - **[Item Management]**
 - **[Data Persistence]**
 - **[User-Friendly Interface]**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 📽️ Presentation <a name="live-demo"></a>
+
+> [📷 see video ](https://drive.google.com/file/d/1wS13OHkeumgCOXw5gG2Djih8xaj6F9o_/view?usp=sharing)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
